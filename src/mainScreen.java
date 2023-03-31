@@ -8,14 +8,20 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
+
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 
+
 public class mainScreen extends JFrame {
     private boolean isEToV=true;
+
+    private boolean isFavOpen=false;
 
     public List <Word> current;
 
@@ -38,6 +44,10 @@ public class mainScreen extends JFrame {
     private JPanel topPannel;
     private JPanel midPannel;
     private JPanel botPannel;
+
+
+
+
 
 
 
@@ -129,9 +139,82 @@ public class mainScreen extends JFrame {
     }
 
     private void showHistory() {
+
+
+
+
+
+
     }
 
     private void showFav() {
+
+
+
+        if (!isFavOpen)
+        {
+            favoriteScreen fs=new favoriteScreen();
+            fs.setContentPane(fs.panel);
+
+
+
+
+            fs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            fs.setBounds(600,200,600,400);
+            fs.setVisible(true);
+            fs.setResizable(false);
+            isFavOpen=true;
+            fs.model.addElement("dsfiouysdfygh");
+
+
+
+
+
+
+            fs.addWindowListener(new WindowListener() {
+                @Override
+                public void windowOpened(WindowEvent e) {
+
+                }
+
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    isFavOpen=false;
+
+                }
+
+                @Override
+                public void windowClosed(WindowEvent e) {
+
+                }
+
+                @Override
+                public void windowIconified(WindowEvent e) {
+
+                }
+
+                @Override
+                public void windowDeiconified(WindowEvent e) {
+
+                }
+
+                @Override
+                public void windowActivated(WindowEvent e) {
+
+                }
+
+                @Override
+                public void windowDeactivated(WindowEvent e) {
+
+                }
+            });
+
+
+
+
+
+
+        }
     }
 
     private void addToFav() {
@@ -208,9 +291,22 @@ public class mainScreen extends JFrame {
     public static void main(String[] args) {
         mainScreen ms =new mainScreen();
         ms.setContentPane(ms.mainScreen);
+        ms.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ms.setBounds(600,200,600,400);
         ms.setVisible(true);
         ms.setResizable(false);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
