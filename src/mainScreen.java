@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -9,9 +8,10 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +22,8 @@ public class mainScreen extends JFrame {
     private boolean isEToV=true;
 
     private boolean isFavOpen=false;
+
+    public List<String> favList=new ArrayList<String>();
 
     public List <Word> current;
 
@@ -149,22 +151,48 @@ public class mainScreen extends JFrame {
 
     private void showFav() {
 
-
-
         if (!isFavOpen)
         {
             favoriteScreen fs=new favoriteScreen();
             fs.setContentPane(fs.panel);
-
-
-
 
             fs.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             fs.setBounds(600,200,600,400);
             fs.setVisible(true);
             fs.setResizable(false);
             isFavOpen=true;
-            fs.model.addElement("dsfiouysdfygh");
+
+
+            //đọc từ file fav.txt để lấy danh sách các từ yêu thích
+            try {
+                FileReader fr = new FileReader("fav.txt");
+                BufferedReader br = new BufferedReader(fr);
+                String line;
+                while ((line = br.readLine()) != null) {
+                    fs.model.addElement(line);
+                }
+                br.close();
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
+            fs.wordsList.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    String s;
+                    super.mouseClicked(e);
+                    if (e.getClickCount() == 2)
+                        s=fs.wordsList.getSelectedValue();
+
+
+
+
+
+                }
+            });
 
 
 
@@ -218,6 +246,10 @@ public class mainScreen extends JFrame {
     }
 
     private void addToFav() {
+
+
+
+
     }
 
     private void deleteFromDict() {

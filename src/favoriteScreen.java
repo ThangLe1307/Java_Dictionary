@@ -18,28 +18,14 @@ public class favoriteScreen extends JFrame {
     model=new DefaultListModel<>();
 
 
-    model.addElement("Element 1");
-    model.addElement("Element 2");
-    model.addElement("Element 3");
-
-
-
-
-
-
-
 
     wordsList= new JList<String>(model);
 
-    model.addElement("abcg");
 
 
     // Tạo panel chứa JList và button
 
     label=new JLabel();
-    label.setText("Favorite Words List");
-
-
     panel = new JPanel(new BorderLayout());
     JScrollPane scrollPane = new JScrollPane();
     scrollPane.setViewportView(wordsList);
