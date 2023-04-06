@@ -8,19 +8,15 @@ import javax.swing.DefaultListModel;
 public class favoriteScreen extends JFrame {
     public JList<String> wordsList ;
 
-    public DefaultListModel<String> model;
     public JPanel mainPannel;
     public JPanel panel;
     private JLabel label;
 
     public favoriteScreen() {
 
-    model=new DefaultListModel<>();
 
 
-
-    wordsList= new JList<String>(model);
-
+    wordsList= new JList<String>(new DefaultListModel<>());
 
 
     // Tạo panel chứa JList và button

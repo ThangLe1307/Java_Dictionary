@@ -1,7 +1,13 @@
 import java.util.List;
 
-public class Word {
+public class Word<T> {
     String text;
+    List<T> meaning;
+
+    public Word(String text, List<T> meaning) {
+        this.text = text;
+        this.meaning = meaning;
+    }
 
     public String getText() {
         return text;
@@ -11,23 +17,11 @@ public class Word {
         this.text = text;
     }
 
-    public List<String> getMeaning() {
+    public List<T> getMeaning() {
         return meaning;
     }
 
-    public void setMeaning(List<String> meaning) {
+    public void setMeaning(List<T> meaning) {
         this.meaning = meaning;
     }
-
-    List<String> meaning;
-
-    public Word(String text, List<String> meaning) {
-        this.text = text;
-        this.meaning = meaning;
-    }
-
-
-
-
 }
-
